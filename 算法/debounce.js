@@ -1,7 +1,7 @@
 function debounce(func, wait, immediate) {
     let timeout, result;
 
-    let debounced = function () {
+    const debounced = function () {
         const context = this;
         const args = arguments;
 
@@ -17,7 +17,7 @@ function debounce(func, wait, immediate) {
             if (callNow) result = func.apply(context, args)
         } else {
             timeout = setTimeout(function () {
-                result = func.apply(context.apply(context, args))
+                result = func.apply(context, args)
             }, wait)
         }
 

@@ -44,3 +44,34 @@ function LazyMan(name) {
 }
 
 LazyMan("Tll").eat("apple").sleep(1000).eat("orange")
+
+
+function Fn() {
+    console.log("初始化");
+}
+
+Fn.prototype.fly = function(param) {
+    console.log(param);
+
+    return this;
+}
+
+//因为 new 在实例化的时候this会指向所创建的对象，所以this.fly会在原型链找到。
+const a = new Fn()
+a.fly("1").fly("2").fly("3")
+
+
+const obj = {
+    a: function() {
+        console.log("a")
+        return this;
+    },
+    b: function() {
+        console.log("b")
+        return this;
+    }
+}
+
+obj.a().b().a()
+
+// 核心点在于最后返回实例本身
